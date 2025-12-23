@@ -66,11 +66,12 @@ export async function renderPDFPageToImage(
     canvas.width = viewport.width;
     canvas.height = viewport.height;
 
+    // @ts-ignore - pdfjs-dist types may be incompatible
     await page.render({
         canvasContext: context,
         viewport: viewport,
         canvas: canvas,
-    } as Parameters<typeof page.render>[0]).promise;
+    }).promise;
 
     return canvas.toDataURL('image/png');
 }
