@@ -69,7 +69,8 @@ export async function renderPDFPageToImage(
     await page.render({
         canvasContext: context,
         viewport: viewport,
-    }).promise;
+        canvas: canvas,
+    } as Parameters<typeof page.render>[0]).promise;
 
     return canvas.toDataURL('image/png');
 }
